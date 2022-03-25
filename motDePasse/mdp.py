@@ -65,7 +65,7 @@ while check:
                 print('Le système est bloqué, réessayé dans 10 secondes : ')
                 sleep(10)
                 verification = False
-                print("Voulez-vous réinitialiser le mot de passe ? (Y pour oui et N pour non ou A pour abandonner)")
+    print("Voulez-vous réinitialiser le mot de passe ? (Y pour oui et N pour non ou A pour abandonner)")
 
 
     while reinitialized:
@@ -83,4 +83,5 @@ while check:
             reinitialized = False
 
         elif keyboard.is_pressed('a'):
+            reinitialized = False
             ckeck = False

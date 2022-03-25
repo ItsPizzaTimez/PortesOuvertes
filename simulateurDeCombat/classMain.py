@@ -29,17 +29,20 @@ class Player:
 
         target.damage(self.attack)
 
-Knight = Player("Knight", 20, 5)
+
+
+
 Ogre = Player("Ogre", 25, 4)
 Fairy = Player("Fairy", 40,2)
 Wizzard = Player("Wizzard", 15, 6)
 
-print("Appuie sur ESPACE pour commencer à jouer !")
 
 game = True 
 
+print("Appuie sur ESPACE pour commencer à jouer !")
+
 while game:
-    
+
     if keyboard.is_pressed('SPACE'):
         
         for i in range(1,4):
@@ -48,16 +51,16 @@ while game:
 
         print("C'est partit !")
 
-        sleep(0.5)
-        print("\n\nKnight")
-        sleep(0.5)
-        print("\n\nOgre")
-        sleep(0.5)
-        print("\n\nFairy")
-        sleep(0.5)
-        print("\n\nWizzard")
-        sleep(0.5)
+        user = str(input('Mettez votre pseudo : '))
 
-        character = str(input("\nChoisissez votre heros !"))
+        player_Knight = Player(user, 20, 5)
+        print("Bienvenue dans l'équipe : ",player_Knight.get_pseudo()," !")
 
-        print("Bon choix ! Bienvenue dans l'équipe : ",character, " !")
+        print("Prêt pour les combats ? Si oui, appuyer sur ESPACE sinon, sur ALT")
+
+        if keyboard.is_pressed('1'):
+
+            print("\n\nPremier level : ennemie : Ogre\n\n")
+        
+        elif keyboard.is_pressed('2'):
+            game = False
