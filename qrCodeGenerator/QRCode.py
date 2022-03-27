@@ -1,7 +1,7 @@
 import qrcode
 
 data = input('Mettez votre lien juste ici : ')
-color_scan = input('Mettez votre couleur juste ici en anglais(important) pour les trets : ')
+color_scan = input('Mettez votre couleur juste ici en anglais(important) pour les traits : ')
 color_background = input('Mettez votre couleur juste ici en anglais(important) pour le fond du QRcode : ')
 
 qrcode = qrcode.QRCode(
