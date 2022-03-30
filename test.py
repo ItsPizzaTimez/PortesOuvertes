@@ -1,13 +1,41 @@
-from http import server
-import smtplib
+print("г--೦\n|  |\n|  ^\n|__")
 
-server = smtplib.SMTP_SSL("smtp.gmail.com",465) # variable qui est egale au client
 
-server.login("jpocondorcet@gmail.com","1fR     a$0     w!") # on connecte le client au compte google du "bot"
+from operator import length_hint
+import random
+import re
+import keyboard
 
-# creation du mail
+## ########
+## data
 
-user = str(input("choisissez votre destinataire : "))
-text = str(input("ecrivez votre mail : "))
+wordList = {
+    "firstWord":"cacan",
+    "secondWord":"banane"
+}
 
-server.sendmail("jpocondorcet@gmail.com",user,text)
+
+## ########
+## def spawnRandomWord
+
+def spawnRandomWord():
+    randomWord = random.choice(list(wordList.values()))
+    return randomWord
+
+def verifRandomWord(word):
+    userInput = str(input("Choisissez une lettre : "))
+
+    for char in re.finditer(userInput):
+        print(char.start())
+
+def main():
+    print("Bienvenue sur le jeu du pendu !\n\nAppuie sur ESPACE pour commencer à jouer :)\n")
+    choice = True
+    while choice:
+        if keyboard.is_pressed('SPACE'):
+            word = spawnRandomWord()
+            verifRandomWord(word)
+            choice = False
+        elif keyboard.is_pressed(not 'SPACE'):
+            print("Appuie sur ESPACE pour commencer à jouer :)\n")
+main()

@@ -12,11 +12,12 @@ reinitialized = True
 
 ## #####################
 ## Clear the console
+
 def clearConsole(): 
     os.system('cls') # pour Windows uniquement
 
 def choosePwd():
-    # creer son propre mot de passe
+            # creer son propre mot de passe
             mdp_register = str(input("Choisissez votre mot de passe : ")) # on stock le mot de passe dans la variable "mdp_register"
             user_mail = str(input("Mettez votre adresse mail pour : "))
             print("Afin de confirmer, appuyez sur la touche Y pour le confirmer, appuyez sur la touche N pour le retapper") # on écrit juste une phrase pour informer
@@ -33,15 +34,43 @@ def choosePwd():
             return mdp
     
 def generatePwd():
-        # systeme pour generer un mot de passe aléatoire
+            # systeme pour generer un mot de passe aléatoire
             characters = string.printable
             mdp = ""
             mdp_size = int(input("Veuillez choisir la taille du mot de passe : "))
-
-            for i in range(mdp_size): # pour tous les nombres (i est un exemple) présents dans "mdp_size" alors
+            i = 0
+            while i < mdp_size: # pour tous les nombres (i est un exemple) présents dans "mdp_size" alors
                 num = random.randint(0,99) # on crée une variable "num" qui va choisir au hasard entre 0 et 99
                 mdp = mdp + characters[num] # on initialise la variable mdp qui est l'incrémentation des caracteres égaux a la longueur choisie dans le mot de passe de base vide
+                i += 1
             return mdp
+## #############
+## Email verification
+
+def verifEmail():
+    if keyboard.is_pressed('y'):
+
+        digits = string.digits
+        verify = ""
+        i=0
+        while i < 4:
+            num = random.randint(0,4)
+            verify = verify + digits[num]
+            user_mail = choosePwd()
+            i += 1
+        bot.sendmail("jpocondorcet@gmail.com", user_mail, verify)
+        print("Mail de vérification envoyé a : ",user_mail)
+        verify_user_mail = input("Mettez le code de vérification : ")
+        if verify_user_mail == verify:
+            print('Système dévérouillé avec succès !')
+        else:
+            print("Code incorrect. Voulez-vous renvoyer un code de vérification (Y) ou rettaper votre mot de passe (N)")
+            if keyboard.is_pressed('Y'):
+                verifEmail()
+            elif keyboard.is_pressed('n'):
+                verifPwd()
+    elif keyboard.is_pressed('n'):
+        verifPwd()
 
 ## #####################
 ## Password verification
@@ -64,9 +93,13 @@ def verifPwd(mdp):
             time_check += 10
             print('Le système est bloqué, réessayé dans', time_check ,'secondes :')
             sleep(time_check)
-
+            print("Code incorrect. Voulez-vous renvoyer un code de vérification (Y) ou rettaper votre mot de passe (N)")
+            verifEmail()
+            verified = False
+            
 ## #############
 ## Start of main
+
 def main():
     print("Voulez-vous choisir votre mot de passe(1) ou le générer(2) ?")
     choice = True
@@ -84,34 +117,3 @@ def main():
     verifPwd(mdp)
     
 main()
-
-""" 
-    # systeme de verification
-    print("Pour réinitialiser le mot de passe, appuyez sur Y sinon pour ignorer appuyez sur N")
-
-
-
-    if keyboard.is_pressed('y'):
-        digits = string.digits
-    verify = ""
-    for i in range(4):
-        num = random.randint(0,4)
-        verify = verify + digits[num]
-    bot.sendmail("jpocondorcet@gmail.com", user_mail, verify)
-    print("Mail de vérification envoyé a : ",user_mail)
-    verify_user_mail = input("Mettez le code de vérification : ")
-    if verify_user_mail == verify:
-        print('Système dévérouillé avec succès !')
-        check = False
-        verification = False
-        reinitialized = False
-    else:
-        print("Code incorrect. Voulez-vous renvoyer un code de vérification (Y) ou rettaper votre mot de passe (N)")
-        if keyboard.is_pressed('Y'):
-            mail_send()
-        elif keyboard.is_pressed('n'):
-            print("")
-
-    verificationt()
-
- """
