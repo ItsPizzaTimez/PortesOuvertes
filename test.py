@@ -27,8 +27,8 @@ def spawnRandomWord():
 
 randomWord = spawnRandomWord()
 def verifRandomWord(word):
+    
     userInput = str(input("Choisissez une lettre : "))
-
     for char in re.finditer(userInput,randomWord):
         print(char.start())
     print(randomWord)
