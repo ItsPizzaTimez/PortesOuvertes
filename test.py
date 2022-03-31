@@ -10,8 +10,11 @@ import keyboard
 ## data
 
 wordList = {
-    "firstWord":"cacan",
-    "secondWord":"banane"
+    "firstWord":"maison",
+    "secondWord":"banane",
+    "threeWord":"animal",
+    "fourWord":"cheval",
+    "fiveWord":"pomme"
 }
 
 
@@ -22,11 +25,13 @@ def spawnRandomWord():
     randomWord = random.choice(list(wordList.values()))
     return randomWord
 
+randomWord = spawnRandomWord()
 def verifRandomWord(word):
     userInput = str(input("Choisissez une lettre : "))
 
-    for char in re.finditer(userInput):
+    for char in re.finditer(userInput,randomWord):
         print(char.start())
+    print(randomWord)
 
 def main():
     print("Bienvenue sur le jeu du pendu !\n\nAppuie sur ESPACE pour commencer à jouer :)\n")
