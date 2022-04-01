@@ -3,6 +3,7 @@ import smtplib
 import string # Importe la librairie string qui va nous donner tous les carcatères
 from time import sleep # Importe la librairie time pour gérer le temps
 
+# Importe checkInput et clearConsole des outils
 from outils import *
 
 bot = smtplib.SMTP_SSL("smtp.gmail.com",465)
