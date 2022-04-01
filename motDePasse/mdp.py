@@ -8,7 +8,6 @@ from outils import *
 
 bot = smtplib.SMTP_SSL("smtp.gmail.com",465)
 bot.login("jpocondorcet@gmail.com","1fR     a$0     w!")
-reinitialized = True
 
 # -----------------------------------------------------------------------------
 
