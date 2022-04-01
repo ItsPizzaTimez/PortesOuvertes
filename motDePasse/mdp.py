@@ -11,7 +11,7 @@ bot = smtplib.SMTP_SSL("smtp.gmail.com",465)
 
 # On connecte le "bot" à l'adresse créée pour cette occasion 
 bot.login("jpocondorcet@gmail.com","1fR     a$0     w!")
-userMailInput = input("Veuillez entrer votre adresse mail\n ->")
+userMailInput = input("Veuillez entrer votre adresse mail\n -> ")
 # -----------------------------------------------------------------------------
 
 ## ########################
@@ -21,7 +21,7 @@ def createPassword():
     while True:
         passwordInput = input("Choisissez votre mot de passe : ")
         # "lower" sert à formatter l'input afin de vérifier sans se soucier de la casse 
-        confirmInput = input("Afin de confirmer, appuyez sur la touche Y ou appuyez sur la touche N pour le retaper\n ->").lower() 
+        confirmInput = input("Afin de confirmer, appuyez sur la touche Y ou appuyez sur la touche N pour le retaper\n -> ").lower() 
 
         if checkInput(confirmInput, "y"):
             createdPassword = passwordInput
@@ -54,6 +54,7 @@ def generatePassword():
             pwdSizeInt = int(pwdSize)
 
             i = 0
+
             # On fait la boucle le nombre de fois donné par pwdSizeInt
             while i < pwdSizeInt:
                 # On prend un nombre aléatoire entre 0 et 99
@@ -77,7 +78,7 @@ def passwordForgotten(mdp):
 
     # Boucle du menu de mot de passe oublié
     while True:
-        passwordForgottenMenuInput = input("Souhaitez-vous:\n1- Recevoir un code de vérification par mail\n2- Tenter de rentrer le mot de passe\n ->")
+        passwordForgottenMenuInput = input("Souhaitez-vous:\n1- Recevoir un code de vérification par mail\n2- Tenter de rentrer le mot de passe\n -> ")
 
         if checkInput(passwordForgottenMenuInput, "1"):
             # digits reçoit "0123456789"
@@ -184,7 +185,7 @@ def main():
     clearConsole()
 
     # ".format(mdp)" petmet de remplacer la valeur {} par mdp dans le string
-    print("Votre mot de passe est {}".format(mdp))
+    print("Votre mot de passe est -> ",mdp)
 
     # Boucle de second menu après création / génération de mot de passe
     while(True):
